@@ -1,6 +1,15 @@
 .App {
   text-align: center;
 }
+.navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
 
 .App-logo {
   height: 40vmin;
