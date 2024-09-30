@@ -1,0 +1,105 @@
+.larger-container {
+  max-width: 100%;
+}
+
+.modern-table {
+  background-color: #fff;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 0%;
+  margin: 5px;
+}
+
+.modern-table thead {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.modern-table thead th {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modern-table tbody tr {
+  transition: background-color 0.1s;
+}
+
+.modern-table-card {
+  border: none;
+  margin-top: 5px;
+}
+
+.modern-table-body {
+  padding: 20px;
+}
+
+.article-title {
+  margin-top: -15px;
+  text-align: left;
+  color: #707070;
+  font-size: 22px;
+  background-color: #f8f8f8;
+  padding: 25px;
+  border: 1px solid rgb(241, 241, 241);
+}
+
+
+.dropdown-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+}
+
+.dropdown-button .dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-button .dropdown-menu {
+  border-radius: 4px;
+}
+
+.dropdown-item {
+  padding: 4px 18px;
+}
+
+.dropdown-item:hover {
+  background-color: #e9ecef;
+}
+
+.btn-link {
+  color: #0d87a5;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 10px;
+  border:1px solid #0d87a5;
+  padding: 8px ;}
+
+
+
+.btn-link:hover,
+.btn-link.focus {
+  outline: 0;
+  box-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  border:1px solid #0d87a5;
+  padding: 8px ;
+}
+
+
+.btn-link:disabled,
+.btn-link.disabled {
+  color: #0d87a5;
+  pointer-events: none;
+}

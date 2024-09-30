@@ -1,0 +1,30 @@
+.article-details {
+  font-family: 'Roboto', sans-serif;
+  padding: 15px;
+}
+
+.details-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.details-section p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.details-section p strong {
+  font-weight: 500;
+}
+
+.details-section p svg {
+  color: #007bff;
+}

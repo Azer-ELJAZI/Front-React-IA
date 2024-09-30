@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { getCompanies } from '../apiService'; // Importez votre fonction pour récupérer les companies
+import { FaBuilding, FaCube, FaNewspaper, FaTools } from 'react-icons/fa';
+import { getCompanies, getProductFamilies, getServiceCases } from '../apiService'; // Importez votre fonction pour récupérer les companies
 import company1 from '../assets/company1.jpg'; // Importez vos images
 import company2 from '../assets/company2.jpg';
 import company3 from '../assets/company3.jpg';
 
+
 const Dashboard = () => {
   const [numCompanies, setNumCompanies] = useState(0); // État pour stocker le nombre de companies
+  const [NumServices, setNumServices] = useState(0); // État pour stocker le nombre de companies
+  const [numArticles, setNumArticles] = useState(0); // État pour stocker le nombre de companies
+
 
   useEffect(() => {
     fetchCompanyCount();
+    fetchArticleCount();
+    fetchServiceCount() ;
+
   }, []);
 
   const fetchCompanyCount = async () => {
@@ -20,10 +28,26 @@ const Dashboard = () => {
       console.error('Error fetching companies count:', error);
     }
   };
+  const fetchArticleCount = async () => {
+    try {
+      const response = await getProductFamilies(); // Appelez votre fonction pour récupérer les companies
+      setNumArticles(response.data.length); // Mettez à jour l'état avec le nombre de companies récupéré
+    } catch (error) {
+      console.error('Error fetching companies count:', error);
+    }
+  };
+  const fetchServiceCount = async () => {
+    try {
+      const response = await getServiceCases(); // Appelez votre fonction pour récupérer les companies
+      setNumServices(response.data.length); // Mettez à jour l'état avec le nombre de companies récupéré
+    } catch (error) {
+      console.error('Error fetching services count:', error);
+    }
+  };
 
   return (
     <Container className="mt-4">
-      <h2>Admin Dashboard</h2>
+        <h1 className="mt-5 text-center" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '0.3rem'}}>Admin Dashboard</h1>
       <p>Welcome to the Admin Dashboard!</p>
 
       {/* Tableau de statistiques Bootstrap */}
@@ -39,25 +63,22 @@ const Dashboard = () => {
         <Col md={4}>
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Pages</h5>
-              <p className="card-text">100 Million</p>
+              <h5 className="card-title">Articles</h5>
+              <p className="card-text">23</p>
             </div>
           </div>
         </Col>
         <Col md={4}>
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Sessions</h5>
-              <p className="card-text">10 Million</p>
+              <h5 className="card-title">Services</h5>
+              <p className="card-text">{NumServices}</p>
             </div>
           </div>
         </Col>
       </Row>
 
-      {/* Cercle Bootstrap */}
-      <Row className="mt-4">
-        {/* Ajoutez votre code pour le cercle Bootstrap ici */}
-      </Row>
+    
 
       {/* Cartes avec des images */}
       <Row className="mt-4">
@@ -96,44 +117,47 @@ const Dashboard = () => {
         </Col>
       </Row>
 
-      {/* Section Domains */}
-      <section id="services" >
-    <div class="services container">
-    <div class="service-top">
-      <h1 class="section-title">Doma<span>i</span>ns</h1>
-      <p>azeer azer azer azer azer azer <u>azer</u> azer azer  , azer ,  azer and azer azer azer  !</p>
+{/* Section Domains */}
+<section id="services">
+  <div className="services container">
+    <div className="service-top">
+      <h1 className="section-title">Doma<span>i</span>ns</h1>
     </div>
-    <div class="aze">
-    <div class="service-bottom">
-      <div class="service-item">
-        <div class="icon"><img src="data:image/png;base64,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"/></div>
-        <h2 style={{ fontSize: '18px'}} >reseaux</h2>
-        <p style={{ fontSize: '12px'}}>
-  If you are a student concerned about networks, we can offer you an internship to enhance your skills and level up.
-</p>
-
-      </div>
-      <div class="service-item2">
-        <div class="icon"><img src="data:image/png;base64,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"/></div>
-        <h2 style={{ fontSize: '18px'}} >Telecommunication</h2>
-        <p style={{ fontSize: '12px' }}>
-  If you are concerned about Telecommunication, we can offer you an internship to enhance your skills.
-</p>
-      </div>
-      <div class="service-item3">
-        <div class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEW0lEQVR4nO2cy6tNURzH9/UqYUQyIJG66SYMlDK5yoCBIo/u9XaVGIj/gJIyNZRMmHBTykQGJpKIGBgwQpLkTfK+96OVhdNprf1w1lnrt+/+feoObmfvtb77fM7+rbX3OmdnWc0BNgPvgI/AptR5Gg/wgn88b/wbkhraSJ2n8aBCZIEKkQUqRBaoEFkw1oS0H5CSFhUiDBUiDBUijLE3KNYMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFSIMFRIQYA5wwX6v2PxdBHortqELVAFlvHEs+r01r1VoR4WEwJ4ZPoYrtKNCQmBLlI8PtRQSoganAJgPfM8R8r52QkLV4NgAa23GPM7XUUiQGhwLYDxwDBgtkPEamF1HIUFqcAyAmcBVT9Y7pkSZzObMqCJDjBBgEfCj4JO2KhMAsAJ45sj3FdgfoP20QoAdwCeKGQVOAJO6nSkn617gmyPbU2B5oD7SCAEmA6eozm1gQbdyebJOBc558pjSNTNgX/GF2BL1wHOAd239/QDc8mxjavRAN7I5svZ5so4Ah4FxgfuLKySnRH0BDjq2X+eZDhvOmE9v6IwtfW/xZDUzp9Vd6jOOkIIS9RBYXHCNci1n36Whctr+JgDHc2ZR80L2F10IsBC47znAs2U+5fye9x8BfnpmOAeBngBZZwM3PFlPdntS0XUhVUtUifb6PdNOwxVgVgdZV7Y9CeIPn4Gh/203mRDHvSgzQLswg+SiDkLPAC552jay+iu2N84O0COerH1ZJIIJybkX9V8lqkR/PcABe6a1Y8raUTMWlGhnOnDZk3UYmJZFJKSQvHtRf077PV04gCU5U+jrwNycfZcBTxz7mTu3h7IEhBSSdy/qRyclqghgCnDa07e5E7vBsc9+OxlwlbwVWSJiCSm9HtAJwIC9aHRxq2Vsuxfjqju1ELOY1PF6QKcA84CbVGPU3kofHytnDCG9noWaSusBIQAm2gs716ypHZN5bSaEYEJaZlrDLfeiKq8HhARYVSDDDN7zM0EEFSIRBIxtVWiCkIsSxrayNEFIr5SxrQxjXojEsS1rupA6oUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoUKEoULqJkRJiwoRhgoRhgoRRlZ3GGsHVHdQIbJAhcgBGHKU4Y2pczUSYLfn2+7m521bU+drFPhlqBSBMlrPlG3RAzYJystQKZEG8JG2N9wlZ8TxA9QoD65p+pkxCuxzCHFtq+UrhozMcx2SI2V7sGBNhAIZPiE5+6qUbsrIE1IgZUfrdkogGUVC7OsqJZYMA/C4ZbtHmYMcKTtd2yvFU9sh35sErLHPKzF/ayq2reUr1JkRsA/zv54psWWUkLLr70ZNJqaMlH3WgpRvDCrF+YzcSgN4xEnEYNYk7PMTX6eUUSDlVYhH0NZNyKvUMnKkvGyUEAOw3kp5KaFEAIMtedanCvILAJDgqSkTqg0AAAAASUVORK5CYII="/></div>
-        <h2 style={{ fontSize: '18px'}}> cyberSecurity</h2>
-        <p style={{ fontSize: '12px'}}>If you are concerned about cybersecurity, we can offer you an internship to enhance your skills and level up.</p>
-      </div>
-      <div class="service-item4">
-        <div class="icon"><img src="data:image/png;base64,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"/></div>
-        <h2 style={{ fontSize: '18px'}}>development</h2>
-        <p style={{ fontSize: '12px'}}>If you are concerned about development , we can offer you an internship to enhance your skills and level up.</p>
-      </div>
+    <div className="aze">
+      <div className="service-bottom">
+        <div className="service-item">
+          <div className="icon"><FaBuilding size={40} /></div>
+          <h2 style={{ fontSize: '18px'}}>Companies</h2>
+          <p style={{ fontSize: '12px'}}>
+            If you are a student concerned about networks, we can offer you an internship to enhance your skills and level up.
+          </p>
+        </div>
+        <div className="service-item2">
+          <div className="icon"><FaNewspaper size={40} /></div>
+          <h2 style={{ fontSize: '18px'}}>Articles</h2>
+          <p style={{ fontSize: '12px'}}>
+            If you are concerned about Telecommunication, we can offer you an internship to enhance your skills.
+          </p>
+        </div>
+        <div className="service-item3">
+          <div className="icon"><FaTools size={40} /></div>
+          <h2 style={{ fontSize: '18px'}}>Services</h2>
+          <p style={{ fontSize: '12px'}}>
+            If you are concerned about cybersecurity, we can offer you an internship to enhance your skills and level up.
+          </p>
+        </div>
+        <div className="service-item4">
+          <div className="icon"><FaCube size={40} /></div>
+          <h2 style={{ fontSize: '18px'}}>ProductFamilies</h2>
+          <p style={{ fontSize: '12px'}}>
+            If you are concerned about development, we can offer you an internship to enhance your skills and level up.
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  </section>
+</section>
+
   
   
 <section id="about">
@@ -145,10 +169,9 @@ const Dashboard = () => {
     </div>
     <div class="col-right">
       <h1 class="section-title">About <span>Us</span></h1>
-      <h2>Job Hunting Website </h2>
-      <p>As recruitment website , our main goal is to connect employers with potential candidates who  possess the necessary skills and qualifications for the job . We offer a variety of services to help employers and job seekers alike. For employers , we provide a platform to post job listings and search through resumes to find the perfect candidate!</p>
-         <a target="_blank" href="assets/convention1.pdf" class="cta">Exemple de convention</a>
-         <a target="_blank" href="assets/cvmail.pdf" class="cta">Exemple de CV </a>
+      <h2>  L-mobile </h2>
+      <p>As recruit</p>
+        
     </div>
   </div>
  </section>
@@ -186,8 +209,6 @@ const Dashboard = () => {
 
 <section id="footer">
   <div class="footer container">
-    <div class="brand"><h1>azer <span>azer</span>ty<span>u</span>azer </h1></div>
-    <h2>azer azer azer azer azer azer azer azer !</h2>
     <div class="social-icon">
       <div class="social-item">
         <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFVUlEQVR4nO2dXYxfQxTAr7aU4GFDfZX4qDS0VcSjSESEICgtfVGCVEJMiK82Flk80NiXDSEiikSECoJG4iu7pV1tNNHWppLqrvp80G4REluqP5n0SDYbanfu3JkzM/eX3DTZ7G7Oub/t/945M3OmqlpaWlpaWlpaWgoEmAzMAq4ElgLPAWuATcAgsBPYJddO+dom+Z7l8jP2Z0+1vyt2PkkCnATcBKwAhvHHr8D7wBLgLGBS7FzVAhwvN2or4fgGeBSYGTt/FQD7A9cC/cRnDbAImFKVBnCAiNiCPr4CbgMOqnIH2A+4AfgB/XwHXGdjrnIEmAusJj0+Bk6rcgGYCnQDf5IufwDL7EdtlcGb0yfkw3pgRpUiwDwZqOXGL8DCKiWALvLn/iqRMseTlMMTakf78vB+lfJ4Rd3D3v6VSN2pVN5QVbgEemLfEQU8VWkAeDD2nVDEfbFlLIh9B5Sxx869xJIxA/g59h1QyE/AiTHeqOyoVSsjwLvycXo1cK7U0o4DOuRfOwl2ukxUnQdcBtwKPOKh+Lku6JuX1KY0sgG4ETikZn59HmJZ5u+O7zvYuQoLhTtkcsnLIM2TEFuQnOMjnv+bz9BWQv8UmO45Tx9CLKsanU+RySVN9AOHNpCnLyGWRb7j+yfIA4Hv0cPXwLSGcu3zvJDC/wMeuBld7/sXek+yGSGWxU2sDhlCD697TbB5IYNeV7PIChFNnOktuTBCLNf4DFDTNOx6b4mFFbLaV3Az0cWSmvlMA84Gzt/HtbGh5179+XjgYXRxhmMe02XeYnfE2Lt8DATtSj4t/OYyGgeOUfLKvrXWQFGKb5pY65jHSvQwu46Q29HFS461N02YOkLeRBfdGcxovlZnSY+dbNFEp0Mevehi2KkqLdvItHGXQx4aHuZjOcVFyBXowzjkEfM197+43EWI3SyZtBD2Vqg1co+LkOdJX8jB6ORZFyF2o4o2TCZCVrkIGUAfJhMhG12EbEMfJhMhQy5CfG7Y94XJRMh2FyG2VYU2TCZCRjQL6ZHVhB3juKY6VKs7HK6mKxS7XISE2h8YZoXfOAGOCJDzDpfAvqVMIecEyHmbS2BfUKaQxQFyHnAJzC6DLFFId4Cce10Cs82/ShSyMkDOz7gE1kmZQr4MkPNSl8AWUpgQ9raNCrHVYoFLcLZHYWlCZmueoLKDqh8LEzI/QL7bnZcCBVrkoEnIvaoXigN3BwjQSr9qnNfJE4x/ygR+t70+CJDvHSl8ppZUXJzlLESS2oweTOJCPq8lQ5J6CD2YxIU84EPIHPRgEhdS7+NqVGIfoQOTsJA+LzKUNZkxCQuZ51PIZCWbPk2iQoa8NzizNyN2VqQr5BavMkZtjQ5RCc1NyGBjnYECVoBzEjK/ERmjCo5rIyZnEhPS33gzfynL/x4pQZOQkJFgTfxts8dISZqEhEx8VtAVqaLGaPFnEhGyLvhJPcAJMtkSEpOAkOFoJyhIG4qQW8aMciH2XlzU3B0fX9L2ZLVQGOVCJrwptRGAxwIlbBQLebzSgoxPni5YyHJ1x1ZIAfLFAoW8oE7GmP8pXQUJ6VEr418qw39lLGS3bUtepQRwcQPjFKNAiO2ifUmVIsCRwHsZCekFjq1SRh72nZ4KkiaSkBHJQc+xRnWR4yHeSVDIh7bCXeWKLJjYnICQLbYjUlUCcqrbpcBnCoUMSOPoIs9VnyQn27w1ziKlaUiI3aTztsSS53Hdjn11O2WeZU8gIRukOHp0c5llAHCUnFWyYkwTnLpCbLu/l4HrbS/f5jLIHOAw4IKJzlHLnsE7Zd7m8OYibGlpaWlpaWlpqVTzN2F2x39rAiE5AAAAAElFTkSuQmCC"/></a>

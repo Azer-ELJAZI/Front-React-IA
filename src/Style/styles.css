@@ -1741,7 +1741,35 @@ p{
   color: #f5f7fa; /* Couleur du texte lorsque l'utilisateur survole le bouton */
 }
 
+.user-message {
+  border-bottom: 2px solid #fc0404; /* Rouge pour les messages utilisateurs */
+}
 
+.chatbot-message {
+  border-bottom: 2px solid #20fd03; /* Vert pour les messages chatbot */
+}
+
+/* Ajoutez ceci à votre fichier CSS ou dans une balise <style> */
+@keyframes scroll-left-right {
+  0% {
+    transform: translateX(100%) translateY(0);
+  }
+  50% {
+    transform: translateX(-100%) translateY(-10px);
+  }
+  100% {
+    transform: translateX(100%) translateY(10px);
+  }
+}
+
+.scrolling-title {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left-right 10s linear infinite;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 24px; /* Ajustez la taille selon vos besoins */
+}
 
 
 

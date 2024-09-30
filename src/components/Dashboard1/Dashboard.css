@@ -1,0 +1,43 @@
+.dashboard-container {
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .product-families-list {
+    margin-top: 2rem;
+  }
+  
+  .product-family-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-family-name {
+    font-size: 1.2rem;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+  
+  .product-family-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .dropdown-toggle::after {
+    display: none;
+  }
+  

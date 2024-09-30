@@ -84,19 +84,36 @@ const ServiceCases = () => {
 
   return (
     <Container>
-      <h1 className="mt-5">Service Cases List</h1>
-      <Form style={{ marginBottom: '2cm' }}>
-        <Form.Group controlId="searchForm">
-          <Form.Label>Search Service Case by Number <FaSearch /></Form.Label>
+    <h1 className="mt-5 text-center" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1.2rem'}}>Service Cases List</h1>
+    <Form.Group controlId="searchForm" className="search-bar" style={{ marginBottom: '1.9rem', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: '400px', margin: '0 auto' }}>
+          <FaSearch style={{
+            position: 'absolute',
+            left: '15px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: '#999',
+          }} />
           <Form.Control
             type="text"
-            placeholder="Enter service case number"
+            placeholder="Search service"
             value={searchTerm}
             onChange={handleSearch}
+            style={{
+              paddingLeft: '40px', 
+              borderRadius: '25px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              border: '1px solid #ddd',
+              height: '45px',
+              fontSize: '1.1rem',
+            }}
+            onFocus={(e) => e.target.style.borderColor = '#007bff'}
+            onBlur={(e) => e.target.style.borderColor = '#ddd'}
           />
-        </Form.Group>
-      </Form>
-      <Table striped bordered hover responsive className="table-custom">
+        </div>
+      </Form.Group>
+
+      <Table striped bordered hover responsive className="table-custom"style={{transform: "translate(0px, -0px)" }}>
         <thead>
           <tr>
             <th>#</th>

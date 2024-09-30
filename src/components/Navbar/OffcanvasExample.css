@@ -1,0 +1,198 @@
+
+
+.custom-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    margin-top: 5px;
+    color: #000000;
+    transition: background-color 0.3s ease;
+    border-radius: 8px; 
+    margin-left: 5px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+  
+  
+  .custom-nav-link .nav-text {
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: 500; 
+    font-family: 'Roboto', sans-serif; 
+  
+  }
+  
+  .nav-text:hover {
+    font-size: 17.1px;
+    color: black;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    transition: font-size 0.2s ease, color 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  .custom-nav-link .me-2 {
+    margin-right: 10px;
+  }
+  
+  
+  .submenu {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif; 
+    margin-top: 5px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .submenu a {
+    display: block;
+    padding: 7px;
+    color: #727272;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 500; 
+    font-family: 'Roboto', sans-serif; 
+  }
+  
+  .submenu a:hover {
+    background-color: #f5f5f5; 
+    color: #333; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  }
+  
+  
+  .bg-body-blue {
+    background-color: #0d87a5; 
+    color: white;
+  }
+  
+  
+  .custom-offcanvas-title {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif; 
+    padding: 10px 12px;
+    letter-spacing: 2px;
+  }
+  
+  .offcanvas-header .btn-close {
+    background-color: #dee2e5;
+  }
+  .offcanvas-header .btn-close:hover {
+    background-color: #dee9e9;
+  }
+  
+  .text-white {
+    color: #ffffff; /* White text color */
+    font-size: 18px; /* Adjust font size */
+    margin-left: 14px; /* Adjust left margin */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 1px; /* Increase letter spacing */
+    font-family: 'Roboto', sans-serif; 
+    
+  }
+  /* Offcanvas menu background color */
+.bg-body-blue {
+  background-color: #0d87a5; /* Blue background for the Navbar */
+  color: white; /* White text color */
+}
+
+/* Navbar Brand text styling */
+.text-white {
+  color: #ffffff; /* White text color */
+  font-size: 18px; /* Adjust font size */
+  margin-left: 14px; /* Adjust left margin */
+  text-transform: uppercase; /* Convert text to uppercase */
+  letter-spacing: 1px; /* Increase letter spacing */
+  font-family: 'Roboto', sans-serif; /* Font family */
+}
+
+/* Offcanvas menu title styling */
+.custom-offcanvas-title {
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* Font family */
+  padding: 10px 12px;
+  letter-spacing: 2px;
+}
+
+/* Close button in the Offcanvas header */
+.offcanvas-header .btn-close {
+  background-color: #dee2e5;
+}
+.offcanvas-header .btn-close:hover {
+  background-color: #dee9e9;
+}
+
+/* Custom Nav Link styling */
+.custom-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin-top: 5px;
+  color: #000000;
+  transition: background-color 0.3s ease;
+  border-radius: 8px; 
+  margin-left: 5px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  text-decoration: none; /* Ensure text decoration is none for links */
+}
+
+/* Nav text styling */
+.custom-nav-link .nav-text {
+  margin-left: 5px;
+  font-size: 17px;
+  font-weight: 500; 
+  font-family: 'Roboto', sans-serif; 
+}
+
+/* Nav text hover effect */
+.custom-nav-link .nav-text:hover {
+  font-size: 17.1px;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transition: font-size 0.2s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Icon spacing */
+.custom-nav-link .me-2 {
+  margin-right: 10px;
+}
+
+/* Submenu styling */
+.submenu {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif; 
+  margin-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+/* Submenu link styling */
+.submenu a {
+  display: block;
+  padding: 7px;
+  color: #727272;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: 500; 
+  font-family: 'Roboto', sans-serif; 
+}
+
+/* Submenu link hover effect */
+.submenu a:hover {
+  background-color: #f5f5f5; 
+  color: #333; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Taille réduite pour les icônes dans le Offcanvas */
+.custom-nav-link .fa-icon {
+  font-size: 16px; /* Ajustez cette valeur pour réduire la taille des icônes */
+}
+
+/* Taille réduite pour les icônes dans le Offcanvas en général */
+.custom-nav-link svg {
+  font-size: 16px; /* Ajustez cette valeur pour réduire la taille des icônes */
+}
+
+  

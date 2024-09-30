@@ -6,7 +6,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../Style/styles.css'; // Assurez-vous que ce fichier CSS inclut les styles supplémentaires ci-dessous
 import { deleteCompany, getCompanies } from '../apiService';
 import companyImage from '../assets/company2.jpg';
-
 const List = () => {
   const [companies, setCompanies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -72,18 +71,37 @@ const List = () => {
 
   return (
     <Container>
-      <h1 className="mt-5">Companies List</h1>
-      <Form style={{ marginBottom: '2cm' }}>
-        <Form.Group controlId="searchForm">
-          <Form.Label><FaSearch /> Search Company by Name</Form.Label> {/* Ajout de l'icône de recherche */}
+      <h1 className="mt-5 text-center" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1.2rem'}}>Companies List</h1>
+      {/* Search Bar */}
+       <Form.Group controlId="searchForm" className="search-bar" style={{ marginBottom: '1.9rem', textAlign: 'center' }}>
+        <div style={{ position: 'relative', maxWidth: '400px', margin: '0 auto' }}>
+          <FaSearch style={{
+            position: 'absolute',
+            left: '15px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: '#999',
+          }} />
           <Form.Control
             type="text"
-            placeholder="Enter company name"
+            placeholder="Search company"
             value={searchTerm}
             onChange={handleSearch}
+            style={{
+              paddingLeft: '40px', 
+              borderRadius: '25px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              border: '1px solid #ddd',
+              height: '45px',
+              fontSize: '1.1rem',
+            }}
+            onFocus={(e) => e.target.style.borderColor = '#007bff'}
+            onBlur={(e) => e.target.style.borderColor = '#ddd'}
           />
-        </Form.Group>
-      </Form>
+        </div>
+      </Form.Group>
+
+
       <Table striped bordered hover responsive className="table-custom">
         <thead>
           <tr>

@@ -1,0 +1,81 @@
+form {
+  padding: 30px;
+  border: 1px solid rgb(214, 214, 214);
+  margin: 20px;
+  background-color: #ffffff;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+
+.form-title {
+  margin-top: -15px;
+  text-align: left;
+  color: #707070;
+  font-size: 22px;
+  background-color: #f8f8f8;
+  padding: 25px;
+  border: 1px solid rgb(241, 241, 241);
+}
+
+.text-muted {
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+
+.quantity-input-group {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.quantity-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.quantity-button {
+  padding: 0 3px;
+  font-size: 0.8rem;
+  margin: 0;
+  border: none;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.quantity-button:first-child {
+  border-bottom: 1px solid #ffffff;
+}
+
+.quantity-button:hover {
+  background-color: #cecece;
+}
+
+.quantity-input-group .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 40px; /* Adjust padding to fit the buttons */
+}
+
+.quantity-input-group .form-control:focus {
+  z-index: 1; /* Ensure input is above the buttons when focused */
+}
